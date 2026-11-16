@@ -35,8 +35,8 @@
 <script>
 (() => {
 'use strict';
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL = 'https://pzlbywxvluscwvcavskg.supabase.co/rest/v1/';
+const SUPABASE_ANON_KEY = 'sb_publishable_1DrHVkILID9y0GrZlB5SDQ_iICKUWop;
 const RATE_DEFAULT = 328.50;
 const $ = s => document.querySelector(s);
 const money = (n,c='LKR') => new Intl.NumberFormat('en-LK',{style:'currency',currency:c,maximumFractionDigits:c==='LKR'?0:2}).format(Number(n)||0);
