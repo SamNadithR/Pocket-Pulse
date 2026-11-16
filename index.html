@@ -30,9 +30,9 @@
             --font-display: 'Bricolage Grotesque', sans-serif;
             --font-body: 'Figtree', sans-serif;
             --shadow-subtle: 0 4px 20px rgba(24, 59, 44, 0.04);
-            --radius-card: 20px;
+            --radius-card: 22px;
             --radius-btn: 14px;
-            --nav-height: 72px;
+            --nav-height: 76px;
         }
 
         [data-theme="dark"] {
@@ -85,6 +85,7 @@
         @media (min-width: 768px) { .app-container { max-width: 720px; } }
         @media (min-width: 1024px) { .app-container { max-width: 1100px; } }
 
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -112,7 +113,7 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .icon-btn {
@@ -130,6 +131,7 @@
         }
         .icon-btn:active { transform: scale(0.95); }
 
+        /* Auth Screen */
         #auth-screen {
             position: fixed;
             inset: 0;
@@ -213,11 +215,12 @@
         .btn-primary:active { transform: scale(0.98); }
         .btn-lime { background: var(--accent-lime); color: #17231E; }
 
+        /* Views */
         .app-view {
             display: none;
             flex: 1;
             padding: 12px 20px;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.25s ease;
         }
         .app-view.active { display: flex; flex-direction: column; gap: 20px; }
 
@@ -244,45 +247,16 @@
 
         .net-worth-amount {
             font-family: var(--font-display);
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 800;
             letter-spacing: -1px;
-            margin: 8px 0 16px 0;
+            margin: 6px 0 16px 0;
         }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .stat-box { background: rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px; backdrop-filter: blur(4px); }
         .stat-label { font-size: 12px; color: rgba(255, 255, 255, 0.7); margin-bottom: 4px; }
         .stat-value { font-family: var(--font-display); font-size: 16px; font-weight: 700; }
-
-        .action-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-        .action-chip {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 12px 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 11px;
-            font-weight: 600;
-            text-align: center;
-        }
-        .action-chip:active { transform: scale(0.96); background: var(--soft-green); }
-        .action-icon-wrap {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            background: var(--soft-green);
-            color: var(--positive-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
 
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .section-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; }
@@ -292,7 +266,7 @@
         .tx-item {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 14px 16px;
             display: flex;
             align-items: center;
@@ -300,7 +274,7 @@
         }
         .tx-left { display: flex; align-items: center; gap: 12px; }
         .tx-icon {
-            width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; background: var(--soft-green);
+            width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px; background: var(--soft-green);
         }
         .tx-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
         .tx-sub { font-size: 12px; color: var(--text-secondary); }
@@ -310,36 +284,47 @@
         .tx-amount.transfer { color: var(--gold-color); }
 
         .delete-tx-btn {
-            background: transparent; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; padding: 4px 8px; margin-left: 8px; border-radius: 6px; transition: background 0.2s;
+            background: transparent; border: none; color: var(--text-secondary); font-size: 18px; cursor: pointer; padding: 4px 8px; margin-left: 8px; border-radius: 8px; transition: all 0.2s;
         }
         .delete-tx-btn:hover { background: rgba(220, 107, 96, 0.1); color: var(--error-color); }
 
+        /* Bottom Navigation Bar with Center Add Button */
         nav.bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; height: var(--nav-height); background: var(--bg-card); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; align-items: center; padding: 0 8px; z-index: 60; box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
+            position: fixed; bottom: 0; left: 0; right: 0; height: var(--nav-height); background: var(--bg-card); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; align-items: center; padding: 0 12px; z-index: 60; box-shadow: 0 -4px 25px rgba(0,0,0,0.05);
         }
         .nav-item {
-            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: none; color: var(--text-secondary); font-family: var(--font-body); font-size: 11px; font-weight: 500; cursor: pointer; padding: 8px 0; transition: color 0.2s;
+            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: transparent; border: none; color: var(--text-secondary); font-family: var(--font-body); font-size: 11px; font-weight: 500; cursor: pointer; padding: 6px 0; transition: color 0.2s;
         }
         .nav-item.active { color: var(--positive-color); font-weight: 700; }
         .nav-item svg { width: 22px; height: 22px; stroke-width: 2px; stroke: currentColor; fill: none; }
 
+        .nav-center-btn {
+            width: 52px; height: 52px; background: var(--accent-lime); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #17231E; font-size: 26px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 16px rgba(186, 243, 107, 0.4); transform: translateY(-10px); transition: transform 0.2s;
+        }
+        .nav-center-btn:active { transform: translateY(-8px) scale(0.95); }
+
+        /* Transaction Hub View Segments */
+        .segment-tabs {
+            display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 4px; margin-bottom: 8px;
+        }
+        .segment-tab {
+            flex: 1; padding: 12px; text-align: center; font-weight: 600; font-size: 13px; border-radius: 10px; cursor: pointer; border: none; background: transparent; color: var(--text-secondary); transition: all 0.2s;
+        }
+        .segment-tab.active {
+            background: var(--brand-green); color: #EDF5EE; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Modals */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: none; align-items: flex-end; backdrop-filter: blur(4px);
         }
         .modal-overlay.active { display: flex; }
         .modal-content {
-            background: var(--bg-card); border-top-left-radius: 24px; border-top-right-radius: 24px; width: 100%; max-height: 90vh; padding: 24px; overflow-y: auto; animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg-card); border-top-left-radius: 28px; border-top-right-radius: 28px; width: 100%; max-height: 90vh; padding: 24px; overflow-y: auto; animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .close-modal { background: var(--bg-main); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; color: var(--text-primary); font-weight: bold; }
-
-        .chat-container { display: flex; flex-direction: column; height: calc(100vh - 180px); gap: 12px; }
-        .chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 4px; }
-        .chat-bubble { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.4; }
-        .chat-bubble.user { background: var(--brand-green); color: #EDF5EE; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .chat-bubble.ai { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); align-self: flex-start; border-bottom-left-radius: 4px; }
-        .chat-input-row { display: flex; gap: 8px; }
+        .close-modal { background: var(--bg-main); border: none; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; color: var(--text-primary); font-weight: bold; font-size: 16px; }
 
         #toast {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: var(--brand-green); color: #EDF5EE; padding: 12px 20px; border-radius: 30px; font-size: 14px; font-weight: 600; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease; text-align: center; max-width: 90%;
@@ -417,29 +402,6 @@
                 </div>
             </div>
 
-            <div class="action-grid">
-                <div class="action-chip" onclick="openTxModal('income')">
-                    <div class="action-icon-wrap" style="color: var(--positive-color);">+</div>
-                    <span>Income</span>
-                </div>
-                <div class="action-chip" onclick="openTxModal('expense')">
-                    <div class="action-icon-wrap" style="color: var(--error-color);">-</div>
-                    <span>Expense</span>
-                </div>
-                <div class="action-chip" onclick="openTransferModal()">
-                    <div class="action-icon-wrap" style="color: var(--gold-color);">⇄</div>
-                    <span>Transfer</span>
-                </div>
-                <div class="action-chip" onclick="switchTab('wallets')">
-                    <div class="action-icon-wrap" style="color: var(--gold-color);">💳</div>
-                    <span>Wallets</span>
-                </div>
-                <div class="action-chip" onclick="switchTab('targets')">
-                    <div class="action-icon-wrap" style="color: #60A5FA;">🎯</div>
-                    <span>Goals</span>
-                </div>
-            </div>
-
             <div class="card">
                 <div class="section-header" style="margin-bottom: 8px;">
                     <span class="section-title" style="font-size: 15px;">Monthly Fixed Baseline</span>
@@ -469,20 +431,97 @@
             <div id="targets-list" style="display: flex; flex-direction: column; gap: 12px;"></div>
         </div>
 
-        <!-- 3. WALLETS VIEW -->
+        <!-- 3. TRANSACTION / JOURNAL HUB VIEW (Accessible via Center + Button) -->
+        <div class="app-view" id="view-transaction-hub">
+            <div class="section-header">
+                <h2 class="section-title">Transaction & Journal Hub</h2>
+            </div>
+            <div class="card">
+                <div class="segment-tabs">
+                    <button class="segment-tab active" id="seg-income-btn" onclick="setTxSegment('income')">Income</button>
+                    <button class="segment-tab" id="seg-expense-btn" onclick="setTxSegment('expense')">Expense</button>
+                    <button class="segment-tab" id="seg-journal-btn" onclick="setTxSegment('journal')">Journal Transfer</button>
+                </div>
+
+                <!-- Income Form -->
+                <form id="form-income" class="tx-subform" onsubmit="handleIncomeSubmit(event)" style="margin-top: 16px;">
+                    <div class="form-group">
+                        <label class="form-label">Deposit to Wallet</label>
+                        <select id="inc-wallet" class="form-input" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Amount</label>
+                        <input type="number" step="0.01" id="inc-amount" class="form-input" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Income Category</label>
+                        <select id="inc-category" class="form-input" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Note / Reference</label>
+                        <input type="text" id="inc-note" class="form-input" placeholder="e.g. PickMe Food Batch #4">
+                    </div>
+                    <button type="submit" class="btn-primary btn-lime">Record Income</button>
+                </form>
+
+                <!-- Expense Form -->
+                <form id="form-expense" class="tx-subform" onsubmit="handleExpenseSubmit(event)" style="margin-top: 16px; display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Pay from Wallet</label>
+                        <select id="exp-wallet" class="form-input" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Amount</label>
+                        <input type="number" step="0.01" id="exp-amount" class="form-input" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Expense Category</label>
+                        <select id="exp-category" class="form-input" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Note / Reference</label>
+                        <input type="text" id="exp-note" class="form-input" placeholder="e.g. Petrol fill at Kottawa">
+                    </div>
+                    <button type="submit" class="btn-primary" style="background: var(--error-color); color: #FFF;">Record Expense</button>
+                </form>
+
+                <!-- Journal Transfer Form -->
+                <form id="form-journal" class="tx-subform" onsubmit="handleJournalSubmit(event)" style="margin-top: 16px; display: none;">
+                    <div class="form-group">
+                        <label class="form-label">From Wallet (Source)</label>
+                        <select id="jour-from" class="form-input" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">To Wallet (Destination)</label>
+                        <select id="jour-to" class="form-input" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Transfer Amount</label>
+                        <input type="number" step="0.01" id="jour-amount" class="form-input" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Journal Description</label>
+                        <input type="text" id="jour-note" class="form-input" placeholder="e.g. Bank deposit from cash earnings">
+                    </div>
+                    <button type="submit" class="btn-primary" style="background: var(--gold-color); color: #17231E;">Execute Journal Transfer</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 4. WALLETS VIEW -->
         <div class="app-view" id="view-wallets">
             <div class="section-header">
-                <h2 class="section-title">My Wallets & Bank Accounts</h2>
+                <h2 class="section-title">My Wallets & Accounts</h2>
                 <button class="btn-lime" style="padding: 8px 14px; border-radius: 10px; border: none; font-weight: 700; cursor: pointer;" onclick="openWalletModal()">+ Add Wallet</button>
             </div>
             <div id="wallets-list" style="display: flex; flex-direction: column; gap: 12px;"></div>
         </div>
 
-        <!-- 4. REPORTS VIEW -->
+        <!-- 5. REPORTS VIEW -->
         <div class="app-view" id="view-reports">
             <div class="section-header">
                 <h2 class="section-title">Financial Reports</h2>
-                <button class="btn-lime" style="padding: 6px 12px; border-radius: 8px; border: none; font-weight: 600; font-size: 12px; cursor: pointer;" onclick="openCategoryManagerModal()">⚙️ Manage Categories</button>
+                <button class="btn-lime" style="padding: 6px 12px; border-radius: 8px; border: none; font-weight: 600; font-size: 12px; cursor: pointer;" onclick="openCategoryManagerModal()">⚙️ Categories</button>
             </div>
             <div class="card">
                 <h4 style="margin-bottom: 12px; font-size: 14px;">Income vs Expenses</h4>
@@ -498,110 +537,34 @@
             </div>
         </div>
 
-        <!-- 5. GEMINI AI VIEW -->
-        <div class="app-view" id="view-gemini">
-            <div class="section-header">
-                <h2 class="section-title">PocketPulse Gemini AI</h2>
-                <span style="font-size: 11px; background: var(--soft-green); color: var(--positive-color); padding: 4px 8px; border-radius: 6px; font-weight: 700;">Active Advisor</span>
-            </div>
-            <div class="card chat-container">
-                <div class="chat-messages" id="chat-messages">
-                    <div class="chat-bubble ai">
-                        Ayubowan! I’m your PocketPulse Gemini AI Advisor. Ask me anything like: <em>"Can I afford to save LKR 1,000 today?"</em> or <em>"How should I divide my delivery earnings?"</em>
-                    </div>
-                </div>
-                <div class="chat-input-row">
-                    <input type="text" id="chat-input" class="form-input" placeholder="Ask about your finances..." onkeydown="if(event.key==='Enter')sendAiMessage()">
-                    <button class="btn-primary btn-lime" style="width: auto; padding: 0 20px; margin-top: 0;" onclick="sendAiMessage()">Send</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Navigation Bar -->
+        <!-- Bottom Navigation Bar with Center Action Button -->
         <nav class="bottom-nav">
             <button class="nav-item active" id="nav-home" onclick="switchTab('home')">
                 <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 <span>Home</span>
             </button>
-            <button class="nav-item" id="nav-targets" onclick="switchTab('targets')">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                <span>Goals</span>
-            </button>
             <button class="nav-item" id="nav-wallets" onclick="switchTab('wallets')">
                 <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
                 <span>Wallets</span>
+            </button>
+            
+            <!-- Center Action Button -->
+            <button class="nav-center-btn" onclick="switchTab('transaction-hub')" title="New Transaction / Journal">
+                +
+            </button>
+
+            <button class="nav-item" id="nav-targets" onclick="switchTab('targets')">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                <span>Goals</span>
             </button>
             <button class="nav-item" id="nav-reports" onclick="switchTab('reports')">
                 <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                 <span>Reports</span>
             </button>
-            <button class="nav-item" id="nav-gemini" onclick="switchTab('gemini')">
-                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 7.54 16.6l-3.54-3.54A4 4 0 0 0 12 6a4 4 0 0 0-4 4 4 4 0 0 0 1.06 2.74L5.52 16.28A10 10 0 0 1 12 2z"></path></svg>
-                <span>Gemini</span>
-            </button>
         </nav>
     </div>
 
-    <!-- MODALS -->
-
-    <!-- Transaction Modal -->
-    <div class="modal-overlay" id="modal-tx">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="tx-modal-title">New Transaction</h3>
-                <button class="close-modal" onclick="closeModals()">×</button>
-            </div>
-            <form id="tx-form" onsubmit="handleTxSubmit(event)">
-                <input type="hidden" id="tx-type" value="expense">
-                <div class="form-group">
-                    <label class="form-label">Wallet</label>
-                    <select id="tx-wallet" class="form-input" required></select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Amount</label>
-                    <input type="number" step="0.01" id="tx-amount" class="form-input" placeholder="0.00" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Category</label>
-                    <select id="tx-category" class="form-input" required></select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Optional Note</label>
-                    <input type="text" id="tx-note" class="form-input" placeholder="e.g. PickMe Food batch">
-                </div>
-                <button type="submit" class="btn-primary btn-lime">Save Transaction</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Transfer Modal (Journal / Banking Inter-wallet transfer) -->
-    <div class="modal-overlay" id="modal-transfer">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Inter-Wallet Transfer</h3>
-                <button class="close-modal" onclick="closeModals()">×</button>
-            </div>
-            <form onsubmit="handleTransferSubmit(event)">
-                <div class="form-group">
-                    <label class="form-label">From Wallet (Source)</label>
-                    <select id="transfer-from" class="form-input" required></select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">To Wallet (Destination)</label>
-                    <select id="transfer-to" class="form-input" required></select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Amount</label>
-                    <input type="number" step="0.01" id="transfer-amount" class="form-input" placeholder="0.00" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Reference Note</label>
-                    <input type="text" id="transfer-note" class="form-input" placeholder="e.g. Bank deposit from cash">
-                </div>
-                <button type="submit" class="btn-primary btn-lime">Complete Transfer</button>
-            </form>
-        </div>
-    </div>
+    <!-- MODALS (Zero Native Prompts) -->
 
     <!-- Wallet Modal -->
     <div class="modal-overlay" id="modal-wallet">
@@ -624,7 +587,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" id="wallet-balance-label">Opening / Current Balance</label>
+                    <label class="form-label">Opening / Current Balance</label>
                     <input type="number" step="0.01" id="wallet-balance" class="form-input" value="0.00" required>
                 </div>
                 <button type="submit" class="btn-primary btn-lime" id="wallet-submit-btn">Save Wallet</button>
@@ -680,7 +643,7 @@
                 </div>
             </div>
             <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 16px 0;">
-            <h4 style="font-size: 14px; margin-bottom: 8px;">Existing Categories (Click to Delete)</h4>
+            <h4 style="font-size: 14px; margin-bottom: 8px;">Existing Categories (Click Remove)</h4>
             <div id="category-list-container" style="display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto;"></div>
         </div>
     </div>
@@ -698,7 +661,6 @@
         let currentAuthMode = 'login';
         let currentUser = null;
 
-        // Default categories state
         let categories = {
             income: ['Delivery earnings', 'Salary', 'Freelancing', 'Business income', 'Other income'],
             expense: ['Food', 'Transport / fuel', 'Rent', 'Mobile', 'Loan', 'Shopping', 'Maintenance', 'Entertainment', 'Other']
@@ -828,12 +790,12 @@
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             
             document.getElementById(`view-${tabId}`).classList.add('active');
-            const navEl = document.getElementById(`nav-${tabId}`);
-            if (navEl) navEl.classList.add('active');
-
-            if (tabId === 'reports') renderReports();
-            if (tabId === 'wallets') renderWalletsView();
-            if (tabId === 'targets') renderTargetsView();
+            
+            if (tabId === 'home') document.getElementById('nav-home').classList.add('active');
+            if (tabId === 'wallets') { document.getElementById('nav-wallets').classList.add('active'); renderWalletsView(); }
+            if (tabId === 'targets') { document.getElementById('nav-targets').classList.add('active'); renderTargetsView(); }
+            if (tabId === 'reports') { document.getElementById('nav-reports').classList.add('active'); renderReports(); }
+            if (tabId === 'transaction-hub') { setupTransactionHub(); }
         }
 
         async function fetchUserData() {
@@ -932,132 +894,106 @@
             });
         }
 
-        // Modals & Forms
-        function openTxModal(type) {
-            document.getElementById('tx-type').value = type;
-            document.getElementById('tx-modal-title').textContent = type === 'income' ? 'Record Income' : 'Record Expense';
+        // Transaction Hub Segment Switching
+        function setTxSegment(type) {
+            document.getElementById('seg-income-btn').classList.remove('active');
+            document.getElementById('seg-expense-btn').classList.remove('active');
+            document.getElementById('seg-journal-btn').classList.remove('active');
             
-            const selectWallet = document.getElementById('tx-wallet');
-            selectWallet.innerHTML = '';
-            appData.wallets.forEach(w => {
-                const opt = document.createElement('option');
-                opt.value = w.id;
-                opt.textContent = `${w.name} (${w.currency} ${Number(w.balance).toLocaleString()})`;
-                selectWallet.appendChild(opt);
-            });
+            document.getElementById('form-income').style.display = 'none';
+            document.getElementById('form-expense').style.display = 'none';
+            document.getElementById('form-journal').style.display = 'none';
 
-            // Strict Category filtering (Income shows only income categories, Expense shows only expense categories)
-            const selectCategory = document.getElementById('tx-category');
-            selectCategory.innerHTML = '';
-            const cats = type === 'income' ? categories.income : categories.expense;
-            cats.forEach(c => {
-                const opt = document.createElement('option');
-                opt.value = c;
-                opt.textContent = c;
-                selectCategory.appendChild(opt);
-            });
-
-            document.getElementById('modal-tx').classList.add('active');
-        }
-
-        function openTransferModal() {
-            const fromSelect = document.getElementById('transfer-from');
-            const toSelect = document.getElementById('transfer-to');
-            fromSelect.innerHTML = '';
-            toSelect.innerHTML = '';
-
-            appData.wallets.forEach(w => {
-                const opt1 = document.createElement('option');
-                opt1.value = w.id;
-                opt1.textContent = `${w.name} (${w.currency} ${Number(w.balance).toLocaleString()})`;
-                fromSelect.appendChild(opt1);
-
-                const opt2 = document.createElement('option');
-                opt2.value = w.id;
-                opt2.textContent = `${w.name} (${w.currency} ${Number(w.balance).toLocaleString()})`;
-                toSelect.appendChild(opt2);
-            });
-            document.getElementById('modal-transfer').classList.add('active');
-        }
-
-        function openWalletModal(walletId = null) {
-            const titleEl = document.getElementById('wallet-modal-title');
-            const idEl = document.getElementById('wallet-edit-id');
-            const nameEl = document.getElementById('wallet-name');
-            const currEl = document.getElementById('wallet-currency');
-            const balEl = document.getElementById('wallet-balance');
-            const btnEl = document.getElementById('wallet-submit-btn');
-
-            if (walletId) {
-                const w = appData.wallets.find(x => x.id === walletId);
-                if (w) {
-                    titleEl.textContent = 'Edit Wallet / Balance';
-                    idEl.value = w.id;
-                    nameEl.value = w.name;
-                    currEl.value = w.currency;
-                    balEl.value = w.balance;
-                    btnEl.textContent = 'Update Wallet';
-                }
+            if (type === 'income') {
+                document.getElementById('seg-income-btn').classList.add('active');
+                document.getElementById('form-income').style.display = 'block';
+            } else if (type === 'expense') {
+                document.getElementById('seg-expense-btn').classList.add('active');
+                document.getElementById('form-expense').style.display = 'block';
             } else {
-                titleEl.textContent = 'Add New Wallet';
-                idEl.value = '';
-                nameEl.value = '';
-                currEl.value = 'LKR';
-                balEl.value = '0.00';
-                btnEl.textContent = 'Create Wallet';
+                document.getElementById('seg-journal-btn').classList.add('active');
+                document.getElementById('form-journal').style.display = 'block';
             }
-            document.getElementById('modal-wallet').classList.add('active');
         }
 
-        function openTargetModal() {
-            document.getElementById('modal-target').classList.add('active');
+        function setupTransactionHub() {
+            // Populate wallets
+            const incWallet = document.getElementById('inc-wallet');
+            const expWallet = document.getElementById('exp-wallet');
+            const jourFrom = document.getElementById('jour-from');
+            const jourTo = document.getElementById('jour-to');
+
+            [incWallet, expWallet, jourFrom, jourTo].forEach(el => el.innerHTML = '');
+
+            appData.wallets.forEach(w => {
+                const optStr = `${w.name} (${w.currency} ${Number(w.balance).toLocaleString()})`;
+                
+                const o1 = document.createElement('option'); o1.value = w.id; o1.textContent = optStr; incWallet.appendChild(o1);
+                const o2 = document.createElement('option'); o2.value = w.id; o2.textContent = optStr; expWallet.appendChild(o2);
+                const o3 = document.createElement('option'); o3.value = w.id; o3.textContent = optStr; jourFrom.appendChild(o3);
+                const o4 = document.createElement('option'); o4.value = w.id; o4.textContent = optStr; jourTo.appendChild(o4);
+            });
+
+            // Populate strict categories
+            const incCat = document.getElementById('inc-category');
+            incCat.innerHTML = '';
+            categories.income.forEach(c => {
+                const opt = document.createElement('option'); opt.value = c; opt.textContent = c; incCat.appendChild(opt);
+            });
+
+            const expCat = document.getElementById('exp-category');
+            expCat.innerHTML = '';
+            categories.expense.forEach(c => {
+                const opt = document.createElement('option'); opt.value = c; opt.textContent = c; expCat.appendChild(opt);
+            });
         }
 
-        function openCategoryManagerModal() {
-            renderCategoryManagerList();
-            document.getElementById('modal-category-manager').classList.add('active');
-        }
-
-        function closeModals() {
-            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-        }
-
-        async function handleTxSubmit(e) {
+        async function handleIncomeSubmit(e) {
             e.preventDefault();
-            const type = document.getElementById('tx-type').value;
-            const wallet_id = document.getElementById('tx-wallet').value;
-            const amount = parseFloat(document.getElementById('tx-amount').value);
-            const category = document.getElementById('tx-category').value;
-            const note = document.getElementById('tx-note').value;
+            const wallet_id = document.getElementById('inc-wallet').value;
+            const amount = parseFloat(document.getElementById('inc-amount').value);
+            const category = document.getElementById('inc-category').value;
+            const note = document.getElementById('inc-note').value;
 
             const wallet = appData.wallets.find(w => w.id === wallet_id);
-            const newBal = type === 'income' ? Number(wallet.balance) + amount : Number(wallet.balance) - amount;
+            wallet.balance = Number(wallet.balance) + amount;
 
-            if (supabaseClient && currentUser.id !== 'demo-user') {
-                const { error } = await supabaseClient.from('transactions').insert([{
-                    user_id: currentUser.id, wallet_id, type, amount, category, note, occurred_at: new Date().toISOString()
-                }]);
-                if (error) { showToast(error.message); return; }
-                await supabaseClient.from('wallets').update({ balance: newBal }).eq('id', wallet_id);
-                fetchUserData();
-            } else {
-                wallet.balance = newBal;
-                appData.transactions.unshift({
-                    id: 't_' + Date.now(), wallet_id, type, amount, category, note, occurred_at: new Date().toISOString()
-                });
-                updateDashboard();
-            }
-            closeModals();
-            showToast("Transaction recorded!");
+            appData.transactions.unshift({
+                id: 't_' + Date.now(), wallet_id, type: 'income', amount, category, note, occurred_at: new Date().toISOString()
+            });
+
+            updateDashboard();
+            showToast("Income recorded successfully!");
             e.target.reset();
+            switchTab('home');
         }
 
-        async function handleTransferSubmit(e) {
+        async function handleExpenseSubmit(e) {
             e.preventDefault();
-            const fromId = document.getElementById('transfer-from').value;
-            const toId = document.getElementById('transfer-to').value;
-            const amount = parseFloat(document.getElementById('transfer-amount').value);
-            const note = document.getElementById('transfer-note').value || 'Inter-wallet transfer';
+            const wallet_id = document.getElementById('exp-wallet').value;
+            const amount = parseFloat(document.getElementById('exp-amount').value);
+            const category = document.getElementById('exp-category').value;
+            const note = document.getElementById('exp-note').value;
+
+            const wallet = appData.wallets.find(w => w.id === wallet_id);
+            wallet.balance = Number(wallet.balance) - amount;
+
+            appData.transactions.unshift({
+                id: 't_' + Date.now(), wallet_id, type: 'expense', amount, category, note, occurred_at: new Date().toISOString()
+            });
+
+            updateDashboard();
+            showToast("Expense recorded successfully!");
+            e.target.reset();
+            switchTab('home');
+        }
+
+        async function handleJournalSubmit(e) {
+            e.preventDefault();
+            const fromId = document.getElementById('jour-from').value;
+            const toId = document.getElementById('jour-to').value;
+            const amount = parseFloat(document.getElementById('jour-amount').value);
+            const note = document.getElementById('jour-note').value || 'Journal inter-wallet transfer';
 
             if (fromId === toId) {
                 showToast("Source and destination wallets must be different.");
@@ -1075,15 +1011,59 @@
             fromWallet.balance = Number(fromWallet.balance) - amount;
             toWallet.balance = Number(toWallet.balance) + amount;
 
-            const transferId = 'tr_' + Date.now();
             appData.transactions.unshift({
-                id: transferId, wallet_id: fromId, type: 'transfer', amount, category: `Transfer to ${toWallet.name}`, note, occurred_at: new Date().toISOString()
+                id: 'tr_' + Date.now(), wallet_id: fromId, type: 'transfer', amount, category: `Journal Transfer to ${toWallet.name}`, note, occurred_at: new Date().toISOString()
             });
 
             updateDashboard();
-            closeModals();
-            showToast("Transfer completed successfully!");
+            showToast("Journal transfer completed!");
             e.target.reset();
+            switchTab('home');
+        }
+
+        async function deleteTransaction(txId) {
+            const tx = appData.transactions.find(t => t.id === txId);
+            if (!tx) return;
+
+            const wallet = appData.wallets.find(w => w.id === tx.wallet_id);
+            if (wallet) {
+                if (tx.type === 'income') wallet.balance = Number(wallet.balance) - Number(tx.amount);
+                else if (tx.type === 'expense') wallet.balance = Number(wallet.balance) + Number(tx.amount);
+            }
+
+            appData.transactions = appData.transactions.filter(t => t.id !== txId);
+            updateDashboard();
+            showToast("Transaction deleted and balance reverted.");
+        }
+
+        // Wallet Management (Modal instead of browser prompts)
+        function openWalletModal(walletId = null) {
+            const titleEl = document.getElementById('wallet-modal-title');
+            const idEl = document.getElementById('wallet-edit-id');
+            const nameEl = document.getElementById('wallet-name');
+            const currEl = document.getElementById('wallet-currency');
+            const balEl = document.getElementById('wallet-balance');
+            const btnEl = document.getElementById('wallet-submit-btn');
+
+            if (walletId) {
+                const w = appData.wallets.find(x => x.id === walletId);
+                if (w) {
+                    titleEl.textContent = 'Edit Wallet & Opening Balance';
+                    idEl.value = w.id;
+                    nameEl.value = w.name;
+                    currEl.value = w.currency;
+                    balEl.value = w.balance;
+                    btnEl.textContent = 'Update Wallet';
+                }
+            } else {
+                titleEl.textContent = 'Add New Wallet';
+                idEl.value = '';
+                nameEl.value = '';
+                currEl.value = 'LKR';
+                balEl.value = '0.00';
+                btnEl.textContent = 'Create Wallet';
+            }
+            document.getElementById('modal-wallet').classList.add('active');
         }
 
         async function handleWalletSubmit(e) {
@@ -1094,31 +1074,21 @@
             const balance = parseFloat(document.getElementById('wallet-balance').value);
 
             if (editId) {
-                // Edit existing wallet opening balance
                 const w = appData.wallets.find(x => x.id === editId);
-                if (w) {
-                    w.name = name;
-                    w.currency = currency;
-                    w.balance = balance;
-                }
+                if (w) { w.name = name; w.currency = currency; w.balance = balance; }
                 showToast("Wallet updated successfully!");
             } else {
-                if (supabaseClient && currentUser.id !== 'demo-user') {
-                    const { error } = await supabaseClient.from('wallets').insert([{ user_id: currentUser.id, name, currency, balance }]);
-                    if (error) { showToast(error.message); return; }
-                    fetchUserData();
-                } else {
-                    appData.wallets.push({ id: 'w_' + Date.now(), name, currency, balance });
-                }
-                showToast("Wallet created!");
+                appData.wallets.push({ id: 'w_' + Date.now(), name, currency, balance });
+                showToast("New wallet created!");
             }
             updateDashboard();
+            renderWalletsView();
             closeModals();
             e.target.reset();
         }
 
-        async function deleteWallet(walletId) {
-            if (confirm("Are you sure you want to delete this wallet? All linked transactions will also be unlinked.")) {
+        function deleteWallet(walletId) {
+            if (confirm("Delete this wallet? Linked transactions will be removed.")) {
                 appData.wallets = appData.wallets.filter(w => w.id !== walletId);
                 appData.transactions = appData.transactions.filter(t => t.wallet_id !== walletId);
                 updateDashboard();
@@ -1127,22 +1097,8 @@
             }
         }
 
-        async function deleteTransaction(txId) {
-            const tx = appData.transactions.find(t => t.id === txId);
-            if (!tx) return;
-
-            const wallet = appData.wallets.find(w => w.id === tx.wallet_id);
-            if (wallet) {
-                if (tx.type === 'income') {
-                    wallet.balance = Number(wallet.balance) - Number(tx.amount);
-                } else if (tx.type === 'expense') {
-                    wallet.balance = Number(wallet.balance) + Number(tx.amount);
-                }
-            }
-
-            appData.transactions = appData.transactions.filter(t => t.id !== txId);
-            updateDashboard();
-            showToast("Transaction deleted and balance reverted.");
+        function openTargetModal() {
+            document.getElementById('modal-target').classList.add('active');
         }
 
         async function handleTargetSubmit(e) {
@@ -1152,13 +1108,7 @@
             const saved_amount = parseFloat(document.getElementById('target-saved').value);
             const deadline = document.getElementById('target-deadline').value;
 
-            if (supabaseClient && currentUser.id !== 'demo-user') {
-                const { error } = await supabaseClient.from('targets').insert([{ user_id: currentUser.id, name, goal_amount, saved_amount, deadline }]);
-                if (error) { showToast(error.message); return; }
-                fetchUserData();
-            } else {
-                appData.targets.push({ id: 'g_' + Date.now(), name, goal_amount, saved_amount, deadline });
-            }
+            appData.targets.push({ id: 'g_' + Date.now(), name, goal_amount, saved_amount, deadline });
             closeModals();
             showToast("Savings goal created!");
             renderTargetsView();
@@ -1171,6 +1121,11 @@
                 renderTargetsView();
                 showToast("Goal deleted.");
             }
+        }
+
+        function openCategoryManagerModal() {
+            renderCategoryManagerList();
+            document.getElementById('modal-category-manager').classList.add('active');
         }
 
         function addNewCategory() {
@@ -1207,7 +1162,7 @@
             ['income', 'expense'].forEach(type => {
                 const header = document.createElement('div');
                 header.style.fontWeight = '700';
-                header.style.fontSize = '13px';
+                header.style.fontSize = '12px';
                 header.style.marginTop = '8px';
                 header.style.color = type === 'income' ? 'var(--positive-color)' : 'var(--error-color)';
                 header.textContent = type.toUpperCase() + ' CATEGORIES';
@@ -1223,7 +1178,7 @@
                     row.style.borderRadius = '8px';
                     row.innerHTML = `
                         <span style="font-size: 14px;">${cat}</span>
-                        <button onclick="removeCategory('${type}', '${cat}')" style="background:none; border:none; color:var(--error-color); cursor:pointer; font-weight:bold;">Remove</button>
+                        <button onclick="removeCategory('${type}', '${cat}')" style="background:none; border:none; color:var(--error-color); cursor:pointer; font-weight:bold; font-size:13px;">Remove</button>
                     `;
                     container.appendChild(row);
                 });
@@ -1249,8 +1204,8 @@
                             <div style="font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--positive-color);">${w.currency === 'USD' ? '$' : 'LKR '}${Number(w.balance).toLocaleString()}</div>
                         </div>
                         <div style="display: flex; gap: 4px;">
-                            <button class="icon-btn" style="width: 32px; height: 32px; font-size: 12px;" onclick="openWalletModal('${w.id}')" title="Edit Opening Balance">✏️</button>
-                            <button class="icon-btn" style="width: 32px; height: 32px; color: var(--error-color); font-size: 12px;" onclick="deleteWallet('${w.id}')" title="Delete Wallet">🗑️</button>
+                            <button class="icon-btn" style="width: 34px; height: 34px; font-size: 13px;" onclick="openWalletModal('${w.id}')" title="Edit Opening Balance">✏️</button>
+                            <button class="icon-btn" style="width: 34px; height: 34px; color: var(--error-color); font-size: 13px;" onclick="deleteWallet('${w.id}')" title="Delete Wallet">🗑️</button>
                         </div>
                     </div>
                 `;
@@ -1274,7 +1229,7 @@
                         <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700;">${g.name}</div>
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <span style="font-size: 13px; font-weight: 700; color: var(--positive-color);">${pct}%</span>
-                            <button onclick="deleteTarget('${g.id}')" style="background:none; border:none; color:var(--error-color); cursor:pointer; font-size:16px;" title="Delete Goal">×</button>
+                            <button onclick="deleteTarget('${g.id}')" style="background:none; border:none; color:var(--error-color); cursor:pointer; font-size:18px;" title="Delete Goal">×</button>
                         </div>
                     </div>
                     <div style="width: 100%; background: var(--bg-main); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 12px;">
@@ -1347,36 +1302,8 @@
             });
         }
 
-        async function sendAiMessage() {
-            const inputEl = document.getElementById('chat-input');
-            const msg = inputEl.value.trim();
-            if (!msg) return;
-
-            const chatMessages = document.getElementById('chat-messages');
-            
-            const userBubble = document.createElement('div');
-            userBubble.className = 'chat-bubble user';
-            userBubble.textContent = msg;
-            chatMessages.appendChild(userBubble);
-            inputEl.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            const aiBubble = document.createElement('div');
-            aiBubble.className = 'chat-bubble ai';
-            aiBubble.textContent = 'Thinking...';
-            chatMessages.appendChild(aiBubble);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            setTimeout(() => {
-                if (msg.toLowerCase().includes('save')) {
-                    aiBubble.textContent = `Based on your current LKR 62,000 fixed baseline and recent earnings, saving LKR 1,000 today is fully manageable! Your net cash flow looks solid.`;
-                } else if (msg.toLowerCase().includes('camera') || msg.toLowerCase().includes('insta360')) {
-                    aiBubble.textContent = `Your 'Insta360 X5' savings target is progressing well. Keep up the steady contributions!`;
-                } else {
-                    aiBubble.textContent = `I reviewed your accounts, wallets, and categories. Your funds are balanced and ready for your daily goals.`;
-                }
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 800);
+        function closeModals() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
         }
     </script>
 </body>
