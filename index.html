@@ -76,23 +76,35 @@ canvas{max-height:240px}
 <script>
 /* ===== CONFIG: paste your values (anon key is public by design; never paste service_role) ===== */
 const SUPABASE_URL = 'https://pzlbywxvluscwvcavskg.supabase.co';
-const sb = configured ? supabase.createClient(new URL(SUPABASE_URL).origin, SUPABASE_ANON_KEY) : null;
-  const FIXED = {Rent:9000,'Food and transport':30000,'Mobile bill':3000,'Loan repayment':20000};
+const SUPABASE_ANON_KEY = 'sb_publishable_1DrHVkILID9y0GrZlB5SDQ_iICKUWop';
+const FIXED = { Rent: 9000, 'Food and transport': 30000, 'Mobile bill': 3000, 'Loan repayment': 20000 };
 const FIXED_TOTAL = 62000;
-const CATS = {income:['Delivery earnings','Salary','Freelancing','Business income','Other income'],expense:['Food','Transport / fuel','Rent','Mobile','Loan','Shopping','Maintenance','Entertainment','Other']};
+const CATS = { 
+  income: ['Delivery earnings', 'Salary', 'Freelancing', 'Business income', 'Other income'], 
+  expense: ['Food', 'Transport / fuel', 'Rent', 'Mobile', 'Loan', 'Shopping', 'Maintenance', 'Entertainment', 'Other'] 
+};
 
 /* ===== helpers ===== */
 const $ = s => document.querySelector(s);
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const money = (n, c='LKR') => (c==='USD'?'$':'LKR ') + Number(n).toLocaleString('en-LK',{minimumFractionDigits:c==='USD'?2:0,maximumFractionDigits:2});
-const toLKR = w => w.currency==='USD' ? w.balance*S.rate : Number(w.balance);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const money = (n, c = 'LKR') => (c === 'USD' ? '$' : 'LKR ') + Number(n).toLocaleString('en-LK', { minimumFractionDigits: c === 'USD' ? 2 : 0, maximumFractionDigits: 2 });
+const toLKR = w => w.currency === 'USD' ? w.balance * S.rate : Number(w.balance);
 const day = d => new Date(d).toDateString();
-function toast(msg, err){const t=$('#toast');t.textContent=msg;t.className=err?'err':'';t.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display='none',3500)}
+function toast(msg, err) {
+  const t = $('#toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.className = err ? 'err' : '';
+  t.style.display = 'block';
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => t.style.display = 'none', 3500);
+}
 
 /* ===== state ===== */
-const S = {wallets:[],tx:[],targets:[],rate:328.5,view:'home',period:'month',user:null};
+const S = { wallets: [], tx: [], targets: [], rate: 328.5, view: 'home', period: 'month', user: null };
 const configured = !SUPABASE_URL.startsWith('YOUR_');
-const sb = configured ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const sb = configured && typeof supabase !== 'undefined' ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
 
 /* ===== theme ===== */
 function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('pp-theme',t)}catch(e){}}
