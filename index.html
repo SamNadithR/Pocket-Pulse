@@ -1,91 +1,298 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#101916"><title>PocketPulse — Money in motion</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PocketPulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f3f6f2;--panel:#fff;--ink:#17231e;--muted:#78847d;--line:#e5ebe5;--green:#baf36b;--deep:#183b2c;--soft:#eaf5df;--red:#dc6b60;--shadow:0 12px 34px #20392a0d}
-[data-theme=dark]{--bg:#101916;--panel:#19241f;--ink:#edf5ee;--muted:#9aa99e;--line:#2a3930;--soft:#263b2b;--deep:#baf36b;--shadow:0 12px 34px #0003}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree, sans-serif;padding-bottom:94px;transition:.2s}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1120px;margin:auto;padding:22px 18px 30px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}.brand{font:800 25px 'Bricolage Grotesque';letter-spacing:-1.2px}.brand span{color:#78b83d}.top-actions{display:flex;gap:9px;align-items:center}.iconbtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:14px;padding:10px 12px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}.hero{background:var(--deep);color:white;border-radius:27px;padding:24px;position:relative;overflow:hidden;box-shadow:var(--shadow)}[data-theme=dark] .hero{color:#14231a}.hero:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff30;border-radius:50%;right:-45px;top:-65px;box-shadow:0 0 0 24px #ffffff0b,0 0 0 48px #ffffff08}.hero .eyebrow{color:#d4e9d5}.balance{font:800 clamp(32px,7vw,48px) 'Bricolage Grotesque';letter-spacing:-2px;margin:8px 0 4px}.sub{font-size:13px;color:#d3e1d5}.hero-row{display:flex;justify-content:space-between;align-items:end;gap:10px;position:relative;z-index:1}.pill{background:#ffffff20;border:1px solid #ffffff30;border-radius:999px;padding:8px 11px;font-size:12px;color:inherit}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:15px;margin-top:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:19px;box-shadow:var(--shadow);min-width:0}.span8{grid-column:span 8}.span4{grid-column:span 4}.span6{grid-column:span 6}.span12{grid-column:span 12}.cardhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.card h2{font:700 18px 'Bricolage Grotesque';margin:0;letter-spacing:-.4px}.muted{color:var(--muted)}.metric{font:800 25px 'Bricolage Grotesque';margin-top:6px}.small{font-size:12px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:13px;background:var(--bg);border-radius:16px}.stat strong{display:block;font:700 20px 'Bricolage Grotesque';margin-top:5px}.btn{border:0;background:var(--deep);color:white;border-radius:13px;padding:11px 15px;font-weight:700;font-size:13px}.btn.lime{background:#baf36b;color:#193021}.btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line)}.btn.danger{background:#fff0ee;color:#b84b43}.field{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);outline:none}.field:focus{border-color:#8dc65c}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.formgrid .wide{grid-column:1/-1}label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:0 0 6px}.list{display:grid;gap:9px}.item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.itemname{font-weight:700;font-size:14px}.itemmeta{font-size:11px;color:var(--muted);margin-top:3px}.amount{font-weight:800;font-size:14px;text-align:right}.positive{color:#5b9e37}.negative{color:var(--red)}.targetbar{height:8px;background:var(--line);border-radius:20px;overflow:hidden;margin:12px 0}.targetbar i{display:block;height:100%;background:#9bd65a;border-radius:20px}.nav{position:fixed;bottom:0;left:0;right:0;background:color-mix(in srgb,var(--panel) 93%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:5;padding:9px max(12px,env(safe-area-inset-right)) calc(9px + env(safe-area-inset-bottom));display:flex;justify-content:center}.navinner{width:min(680px,100%);display:flex;justify-content:space-around}.nav button{border:0;background:none;color:var(--muted);font-size:10px;font-weight:700;display:grid;justify-items:center;gap:4px;padding:5px 8px}.nav button b{font-size:19px;font-weight:500}.nav button.active{color:var(--ink)}.nav button.active b{background:var(--soft);border-radius:12px;padding:5px 13px}.page{display:none}.page.active{display:block}.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--panel);padding:11px 16px;border-radius:12px;z-index:20;font-size:13px;display:none;max-width:90%;box-shadow:var(--shadow)}.auth{min-height:100dvh;display:grid;place-items:center;padding:20px}.authbox{width:min(420px,100%)}.authbox .card{padding:26px}.authbox h1{font:800 34px 'Bricolage Grotesque';letter-spacing:-1.5px;margin:8px 0}.authbox p{color:var(--muted);font-size:13px;line-height:1.6}.tabs{display:flex;gap:6px;background:var(--bg);padding:4px;border-radius:12px;margin:18px 0}.tabs button{flex:1;border:0;background:none;color:var(--muted);padding:9px;border-radius:9px;font-weight:700}.tabs button.active{background:var(--panel);color:var(--ink);box-shadow:var(--shadow)}.hidden{display:none!important}.chatlog{height:330px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:4px}.bubble{max-width:88%;padding:12px 14px;border-radius:16px;background:var(--bg);font-size:13px;line-height:1.55;white-space:pre-wrap}.bubble.me{align-self:flex-end;background:var(--deep);color:white}.chatrow{display:flex;gap:8px;margin-top:10px}.chatrow input{flex:1;min-width:0}.notice{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}canvas{max-height:250px}.empty{padding:20px;text-align:center;color:var(--muted);font-size:13px}.inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-@media(max-width:700px){.app{padding:17px 14px 24px}.span8,.span4,.span6{grid-column:span 12}.hero{padding:21px}.card{padding:16px}.balance{font-size:37px}.formgrid{grid-template-columns:1fr 1fr}.nav button{font-size:9px;padding:5px 3px}.nav button b{font-size:18px}}
-</style></head>
+:root{--bg:#F3F6F2;--card:#fff;--tx:#17231E;--mute:#78847D;--bd:#E5EBE5;--lime:#BAF36B;--deep:#183B2C;--soft:#EAF5DF;--neg:#DC6B60;--pos:#5B9E37;--r:18px}
+:root[data-theme=dark]{--bg:#101916;--card:#19241F;--tx:#EDF5EE;--mute:#9AA99E;--bd:#2A3930;--soft:#263B2B;--pos:#9BD65A}
+*{box-sizing:border-box;margin:0}
+body{font:400 15px/1.45 Figtree,system-ui,sans-serif;background:var(--bg);color:var(--tx);transition:background .25s,color .25s;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+h1,h2,h3,.num{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
+.brand{font:800 26px 'Bricolage Grotesque';letter-spacing:-.05em}.brand b{color:var(--pos)}.brand span{color:var(--tx)}
+main{max-width:760px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 16px 16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.hero{background:var(--deep);color:#fff;border:0}.hero .mute{color:#b9cdbf}
+.mute{color:var(--mute);font-size:13px}.num{font-weight:800;font-size:32px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+button,input,select{font:inherit;color:inherit}
+.btn{background:var(--lime);color:#17231E;border:0;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer;transition:transform .1s}
+.btn:active{transform:scale(.97)}.btn:disabled{opacity:.5}
+.ghost{background:transparent;border:1px solid var(--bd);color:var(--tx)}
+.danger{color:var(--neg)}
+input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--bg);margin:4px 0 10px}
+label{font-size:13px;font-weight:600;color:var(--mute)}
+.bar{height:8px;background:var(--soft);border-radius:8px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--pos);border-radius:8px;transition:width .6s}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--bd);display:flex;justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom));z-index:5}
+nav button{background:none;border:0;padding:8px 10px;min-width:60px;min-height:48px;border-radius:12px;color:var(--mute);font-size:12px;font-weight:600;cursor:pointer}
+nav button.on{background:var(--soft);color:var(--tx)}
+.tabs{display:flex;background:var(--bg);border-radius:12px;padding:4px;margin-bottom:14px}
+.tabs button{flex:1;border:0;background:none;padding:10px;border-radius:9px;font-weight:700;cursor:pointer;color:var(--mute)}
+.tabs button.active{background:var(--lime);color:#17231E}
+#auth{max-width:400px;margin:0 auto;padding:12vh 16px}
+dialog{border:1px solid var(--bd);border-radius:var(--r);background:var(--card);color:var(--tx);width:min(92vw,420px);padding:20px}
+dialog::backdrop{background:#0008}
+#toast{position:fixed;top:calc(12px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:var(--deep);color:#fff;padding:10px 16px;border-radius:12px;z-index:20;display:none;max-width:90vw}
+#toast.err{background:var(--neg)}
+.hidden{display:none!important}
+canvas{max-height:240px}
+.chat{white-space:pre-wrap;background:var(--soft);border-radius:12px;padding:12px;margin-top:10px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
 <body>
-<div id="authView" class="auth"><div class="authbox"><div class="brand">Pocket<span>Pulse</span></div><div class="card"><div class="eyebrow">Your money, in motion</div><h1>Ride smart.<br>Save steady.</h1><p>A calm, clear money dashboard built for the rhythm of delivery work in Colombo.</p><div class="tabs"><button id="loginTab" class="active" type="button">Log in</button><button id="signupTab" type="button">Create account</button></div><form id="authForm"><label>Email address</label><input id="authEmail" class="field" type="email" required autocomplete="email" placeholder="you@example.com"><label style="margin-top:12px">Password</label><input id="authPassword" class="field" type="password" required minlength="8" autocomplete="current-password" placeholder="At least 8 characters"><button class="btn lime" style="width:100%;margin-top:16px" id="authSubmit">Log in</button></form><div class="notice" id="authMessage">Your financial data is private to your account. Use a unique password.</div></div><div class="notice">Cloud sync requires your own Supabase project. See SETUP.md in the project.</div></div></div>
-<div id="appView" class="hidden">
-<div class="app"><header class="top"><div class="brand">Pocket<span>Pulse</span></div><div class="top-actions"><span class="small" id="userLabel"></span><button class="iconbtn" id="themeBtn" aria-label="Toggle theme">◐</button><button class="iconbtn" id="logoutBtn">↗</button></div></header>
-<main>
-<section class="page active" id="homePage">
-<div class="hero"><div class="eyebrow">Total net worth · LKR</div><div class="hero-row"><div><div class="balance" id="netWorth">Rs 0</div><div class="sub" id="walletCount">Across 0 wallets</div></div><span class="pill" id="todayDate"></span></div></div>
-<div class="grid">
-<div class="card span8"><div class="cardhead"><h2>Today at a glance</h2><span class="small">LKR</span></div><div class="stats"><div class="stat"><span class="small">Income today</span><strong class="positive" id="todayIncome">Rs 0</strong></div><div class="stat"><span class="small">Spending today</span><strong id="todaySpend">Rs 0</strong></div></div></div>
-<div class="card span4"><div class="cardhead"><h2>Monthly fixed costs</h2></div><div class="metric">Rs 62,000</div><div class="small">Rent · food & transport · mobile · loan</div><div class="small" style="margin-top:8px">Baseline expenses for planning</div></div>
-<div class="card span6"><div class="cardhead"><h2>Recent activity</h2><button class="btn ghost" data-go="wallets">View all</button></div><div class="list" id="recentList"></div></div>
-<div class="card span6"><div class="cardhead"><h2>Savings targets</h2><button class="btn ghost" data-go="targets">Manage</button></div><div id="homeTargets"></div></div>
-</div></section>
-<section class="page" id="targetsPage"><div class="card"><div class="cardhead"><div><div class="eyebrow">Make progress visible</div><h2>Savings targets</h2></div><button class="btn lime" id="newTargetBtn">＋ New target</button></div><div id="targetsList" class="list"></div></div><div class="card hidden" id="targetFormCard" style="margin-top:14px"><h2 style="margin-bottom:14px">Create a target</h2><form id="targetForm" class="formgrid"><div class="wide"><label>Target name</label><input class="field" name="name" required placeholder="Second-hand camera body"></div><div><label>Goal amount (LKR)</label><input class="field" name="goal" type="number" min="1" required></div><div><label>Deadline</label><input class="field" name="deadline" type="date" required></div><div class="wide"><button class="btn lime">Save target</button> <button class="btn ghost" type="button" id="cancelTarget">Cancel</button></div></form></div></section>
-<section class="page" id="walletsPage"><div class="card"><div class="cardhead"><div><div class="eyebrow">Every rupee accounted for</div><h2>Your wallets</h2></div><button class="btn lime" id="newWalletBtn">＋ Add wallet</button></div><div id="walletsList" class="list"></div></div><div class="card" style="margin-top:14px"><h2 style="margin-bottom:14px">Add a transaction</h2><form id="txnForm" class="formgrid"><div><label>Type</label><select class="field" name="type"><option value="income">Income</option><option value="expense">Expense</option></select></div><div><label>Wallet</label><select class="field" name="wallet" id="txnWallet"></select></div><div><label>Amount</label><input class="field" name="amount" type="number" min=".01" step=".01" required></div><div><label>Category</label><select class="field" name="category"><option>Delivery earnings</option><option>Food</option><option>Transport / fuel</option><option>Rent</option><option>Mobile</option><option>Loan</option><option>Other</option></select></div><div class="wide"><label>Note (optional)</label><input class="field" name="note" placeholder="Lunch shift / fuel top-up"></div><div class="wide"><button class="btn lime">Save transaction</button></div></form></div><div class="card" style="margin-top:14px"><div class="cardhead"><h2>Latest transactions</h2></div><div id="txnList" class="list"></div></div></section>
-<section class="page" id="reportsPage"><div class="card"><div class="cardhead"><div><div class="eyebrow">Know your numbers</div><h2>Balance sheet</h2></div><select class="field" id="periodSelect" style="width:auto"><option value="day">Today</option><option value="week">This week</option><option value="month" selected>This month</option></select></div><div class="stats"><div class="stat"><span class="small">Income</span><strong class="positive" id="periodIncome">Rs 0</strong></div><div class="stat"><span class="small">Expenses recorded</span><strong id="periodExpense">Rs 0</strong></div><div class="stat"><span class="small">Net cash flow</span><strong id="periodNet">Rs 0</strong></div><div class="stat"><span class="small">Fixed cost baseline</span><strong>Rs 62,000</strong></div></div><p class="notice">Fixed costs are shown as your planning baseline. Add actual expense transactions to include them in recorded spending; they are not automatically deducted from wallet balances.</p></div><div class="card" style="margin-top:14px"><div class="cardhead"><h2>Income vs costs</h2><span class="small">LKR</span></div><canvas id="reportChart"></canvas></div></section>
-<section class="page" id="aiPage"><div class="card"><div class="eyebrow">Your riding & money co-pilot</div><h2 style="margin:5px 0 14px">Gemini AI advisor</h2><div class="chatlog" id="chatLog"><div class="bubble">Hey rider! I can help you plan savings, understand your cash flow, and build practical delivery-shift habits. Ask me something.</div></div><form class="chatrow" id="chatForm"><input class="field" id="chatInput" placeholder="Can I afford to save Rs 1,000 today?" autocomplete="off"><button class="btn lime">Send</button></form><div class="notice">AI replies are informational, not professional financial advice. For cloud AI, deploy the Supabase Edge Function and set GEMINI_API_KEY as a server secret. Never put an AI key in this page.</div></div><div class="card" style="margin-top:14px"><h2>Quick rider reminders</h2><div class="list"><div class="item"><span>⛽ Track fuel as a work expense</span><span class="small">Daily</span></div><div class="item"><span>🛠️ Set aside a maintenance buffer</span><span class="small">Weekly</span></div><div class="item"><span>🪖 Helmet, lights & tyre checks</span><span class="small">Before shifts</span></div></div></div></section>
-</main></div>
-<nav class="nav"><div class="navinner"><button class="active" data-page="home"><b>⌂</b>Home</button><button data-page="targets"><b>◎</b>Targets</button><button data-page="wallets"><b>▣</b>Wallets</button><button data-page="reports"><b>▥</b>Reports</button><button data-page="ai"><b>✳</b>Gemini AI</button></div></nav>
-</div><div id="toast" class="toast"></div>
+<div id="toast" role="status"></div>
+
+<section id="auth" class="hidden">
+  <div class="brand"><span>Pocket</span><b>Pulse</b></div>
+  <p class="mute" style="margin:4px 0 20px">Your Money, In Motion.</p>
+  <div class="tabs" role="tablist">
+    <button type="button" id="tab-login" class="active" data-mode="login">Log in</button>
+    <button type="button" id="tab-signup" data-mode="signup">Create account</button>
+  </div>
+  <form id="authForm" novalidate>
+    <label for="email">Email</label><input id="email" type="email" autocomplete="email" required>
+    <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" minlength="8" required>
+    <div id="pw2wrap" class="hidden"><label for="pw2">Confirm password</label><input id="pw2" type="password" autocomplete="new-password"></div>
+    <button class="btn" id="authBtn" style="width:100%">Log in</button>
+  </form>
+  <p style="margin-top:14px"><a href="#" id="forgot" class="mute">Forgot password?</a></p>
+  <p id="cfgWarn" class="neg hidden" style="margin-top:14px">Supabase isn't configured yet. Add your project URL and anon key in index.html (see SETUP.md).</p>
+</section>
+
+<main id="app" class="hidden"><div id="view"></div></main>
+<nav id="nav" class="hidden">
+  <button data-v="home" class="on">Home</button><button data-v="targets">Targets</button><button data-v="wallets">Wallets</button><button data-v="reports">Reports</button><button data-v="ai">Gemini AI</button>
+</nav>
+<dialog id="dlg"><form id="dlgForm" method="dialog"><h3 id="dlgTitle" style="margin-bottom:10px"></h3><div id="dlgBody"></div><div class="row"><button type="button" class="btn ghost" id="dlgCancel">Cancel</button><button class="btn" id="dlgOk">Save</button></div></form></dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script>
-(() => {
-'use strict';
+/* ===== CONFIG: paste your values (anon key is public by design; never paste service_role) ===== */
 const SUPABASE_URL = 'https://pzlbywxvluscwvcavskg.supabase.co/rest/v1/';
-const SUPABASE_ANON_KEY = 'sb_publishable_1DrHVkILID9y0GrZlB5SDQ_iICKUWop;
-const RATE_DEFAULT = 328.50;
+const SUPABASE_ANON_KEY = 'sb_publishable_1DrHVkILID9y0GrZlB5SDQ_iICKUWop';
+const FIXED = {Rent:9000,'Food and transport':30000,'Mobile bill':3000,'Loan repayment':20000};
+const FIXED_TOTAL = 62000;
+const CATS = {income:['Delivery earnings','Salary','Freelancing','Business income','Other income'],expense:['Food','Transport / fuel','Rent','Mobile','Loan','Shopping','Maintenance','Entertainment','Other']};
+
+/* ===== helpers ===== */
 const $ = s => document.querySelector(s);
-const money = (n,c='LKR') => new Intl.NumberFormat('en-LK',{style:'currency',currency:c,maximumFractionDigits:c==='LKR'?0:2}).format(Number(n)||0);
-const dateISO = d => new Date(d).toISOString().slice(0,10);
-const today = dateISO(new Date());
-let sb=null,user=null,mode='login',wallets=[],txns=[],targets=[],chart=null,rate=RATE_DEFAULT;
-let localMode = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('YOUR_') && SUPABASE_ANON_KEY.length>20;
-if(localMode) sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-const toast = msg => {const t=$('#toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2600)};
-const showAuth = () => {$('#authView').classList.remove('hidden');$('#appView').classList.add('hidden')};
-const showApp = () => {$('#authView').classList.add('hidden');$('#appView').classList.remove('hidden');$('#userLabel').textContent=user?.email||'Local demo';};
-const localKey=()=>`pocketpulse:${user?.id||'demo'}`;
-function localLoad(){try{const d=JSON.parse(localStorage.getItem(localKey())||'{}');wallets=d.wallets||[{id:crypto.randomUUID(),name:'Daily Cash',currency:'LKR',balance:0},{id:crypto.randomUUID(),name:'Delivery Earnings',currency:'LKR',balance:0},{id:crypto.randomUUID(),name:'Sampath NRFC USD Account',currency:'USD',balance:0}];txns=d.txns||[];targets=d.targets||[];rate=d.rate||RATE_DEFAULT;localSave()}catch(e){wallets=[];txns=[];targets=[]}}
-function localSave(){localStorage.setItem(localKey(),JSON.stringify({wallets,txns,targets,rate}))}
-async function cloudLoad(){const [w,t,g,s]=await Promise.all([sb.from('wallets').select('*').order('created_at'),sb.from('transactions').select('*').order('occurred_at',{ascending:false}),sb.from('targets').select('*').order('created_at'),sb.from('user_settings').select('*').maybeSingle()]);for(const r of [w,t,g,s])if(r.error)throw r.error;wallets=w.data||[];txns=t.data||[];targets=g.data||[];rate=s.data?.usd_lkr_rate||RATE_DEFAULT}
-async function sync(){if(!sb||!user){localSave();return}/* cloud writes are performed per action */}
-async function insert(table,row){if(sb&&user){const {error}=await sb.from(table).insert({...row,user_id:user.id});if(error)throw error}else localSave()}
-async function remove(table,id){if(sb&&user){const {error}=await sb.from(table).delete().eq('id',id);if(error)throw error}else localSave()}
-function render(){renderHome();renderWallets();renderTargets();renderTxns();renderReports()}
-function walletLkr(w){return Number(w.balance)*(w.currency==='USD'?rate:1)}
-function renderHome(){const total=wallets.reduce((s,w)=>s+walletLkr(w),0);$('#netWorth').textContent=money(total);$('#walletCount').textContent=`Across ${wallets.length} wallet${wallets.length===1?'':'s'} · USD board rate ${rate.toFixed(2)}`;$('#todayDate').textContent=new Date().toLocaleDateString('en-LK',{day:'numeric',month:'short'});const todays=txns.filter(t=>dateISO(t.occurred_at||t.created_at)===today);$('#todayIncome').textContent=money(todays.filter(t=>t.type==='income').reduce((s,t)=>s+Number(t.amount),0));$('#todaySpend').textContent=money(todays.filter(t=>t.type==='expense').reduce((s,t)=>s+Number(t.amount),0));$('#recentList').innerHTML=txns.slice(0,4).map(t=>`<div class="item"><div><div class="itemname">${esc(t.category||t.note||'Transaction')}</div><div class="itemmeta">${new Date(t.occurred_at||t.created_at).toLocaleDateString()}</div></div><div class="amount ${t.type==='income'?'positive':'negative'}">${t.type==='income'?'+':'−'}${money(t.amount)}</div></div>`).join('')||'<div class="empty">No activity yet. Add your first transaction.</div>';$('#homeTargets').innerHTML=targets.slice(0,2).map(targetHtml).join('')||'<div class="empty">Your next goal starts here.</div>'}
-function targetProgress(t){const pct=Math.min(100,Number(t.saved_amount||0)/Number(t.goal_amount)*100);const days=Math.max(0,Math.ceil((new Date(t.deadline+'T23:59:59')-new Date())/86400000));const remaining=Math.max(0,Number(t.goal_amount)-Number(t.saved_amount||0));return {pct,days,remaining,daily:days?remaining/days:remaining}}
-function targetHtml(t){const p=targetProgress(t);return `<div style="padding:12px 0;border-bottom:1px solid var(--line)"><div class="itemname">${esc(t.name)}</div><div class="small">${money(t.saved_amount||0)} of ${money(t.goal_amount)} · ${p.pct.toFixed(0)}%</div><div class="targetbar"><i style="width:${p.pct}%"></i></div><div class="inline" style="justify-content:space-between"><span class="small">${p.days} days left · need ${money(p.daily)}/day</span><button class="btn ghost" onclick="contribute('${t.id}')">＋ Add</button></div></div>`}
-function renderTargets(){$('#targetsList').innerHTML=targets.map(t=>targetHtml(t)+`<div class="inline" style="justify-content:flex-end;margin-top:-3px"><button class="btn danger" onclick="deleteTarget('${t.id}')">Delete</button></div>`).join('')||'<div class="empty">No savings targets yet. Create one and build momentum.</div>'}
-function renderWallets(){$('#walletsList').innerHTML=wallets.map(w=>`<div class="item"><div><div class="itemname">${esc(w.name)}</div><div class="itemmeta">${w.currency} ${w.currency==='USD'?'· ≈ '+money(walletLkr(w))+' LKR':''}</div></div><div class="inline"><div class="amount">${money(w.balance,w.currency)}</div><button class="btn danger" onclick="deleteWallet('${w.id}')">×</button></div></div>`).join('')||'<div class="empty">Create a wallet to get started.</div>';$('#txnWallet').innerHTML=wallets.map(w=>`<option value="${w.id}">${esc(w.name)} (${w.currency})</option>`).join('')}
-function renderTxns(){$('#txnList').innerHTML=txns.slice(0,30).map(t=>`<div class="item"><div><div class="itemname">${esc(t.category||'Other')} · ${esc(t.note||'')}</div><div class="itemmeta">${new Date(t.occurred_at||t.created_at).toLocaleString()}</div></div><div class="amount ${t.type==='income'?'positive':'negative'}">${t.type==='income'?'+':'−'}${money(t.amount)}</div></div>`).join('')||'<div class="empty">No transactions recorded.</div>'}
-function renderReports(){const period=$('#periodSelect').value;const now=new Date();const start=new Date(now);if(period==='day')start.setHours(0,0,0,0);if(period==='week'){start.setDate(now.getDate()-((now.getDay()+6)%7));start.setHours(0,0,0,0)}if(period==='month')start.setDate(1),start.setHours(0,0,0,0);const rows=txns.filter(t=>new Date(t.occurred_at||t.created_at)>=start);const inc=rows.filter(t=>t.type==='income').reduce((s,t)=>s+Number(t.amount),0),exp=rows.filter(t=>t.type==='expense').reduce((s,t)=>s+Number(t.amount),0);$('#periodIncome').textContent=money(inc);$('#periodExpense').textContent=money(exp);$('#periodNet').textContent=money(inc-exp);if(chart)chart.destroy();chart=new Chart($('#reportChart'),{type:'bar',data:{labels:['Income','Fixed cost baseline','Other recorded expenses'],datasets:[{data:[inc,period==='month'?62000:period==='week'?62000/4.33:62000/30,exp],backgroundColor:['#9bd65a','#d8a84e','#dd7569'],borderRadius:8}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{callback:v=>'Rs '+Number(v).toLocaleString()}},x:{grid:{display:false}}}}})}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function refresh(){if(sb&&user)await cloudLoad();else localLoad();render()}
-async function act(fn){try{await fn();await refresh();toast('Saved successfully')}catch(e){console.error(e);toast(e.message||'Something went wrong')}}
-$('#loginTab').onclick=()=>setMode('login');$('#signupTab').onclick=()=>setMode('signup');
-function setMode(m){mode=m;$('#loginTab').classList.toggle('active',m==='login');$('#signupTab').classList.toggle('active',m==='signup');$('#authSubmit').textContent=m==='login'?'Log in':'Create account';$('#authMessage').textContent=m==='login'?'Your financial data is private to your account.':'We will send a confirmation email if enabled in Supabase.'}
-$('#authForm').onsubmit=async e=>{e.preventDefault();const email=$('#authEmail').value.trim(),password=$('#authPassword').value;try{if(sb){const r=mode==='login'?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password});if(r.error)throw r.error;if(!r.data.session){$('#authMessage').textContent='Check your email to confirm your account, then log in.';return}user=r.data.user}else{user={id:'demo-'+btoa(email).replace(/=/g,''),email};}await refresh();showApp()}catch(err){$('#authMessage').textContent=err.message||'Authentication failed.'}};
-$('#logoutBtn').onclick=async()=>{if(sb)await sb.auth.signOut();user=null;showAuth()};
-$('#themeBtn').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('pp-theme',t)};document.documentElement.dataset.theme=localStorage.getItem('pp-theme')||'light';
-document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
-function go(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$('#'+p+'Page').classList.add('active');document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===p));if(p==='reports')renderReports()}
-$('#newWalletBtn').onclick=()=>{const name=prompt('Wallet name (e.g. Daily Cash)');if(!name)return;const currency=(prompt('Currency: LKR or USD','LKR')||'LKR').toUpperCase();if(!['LKR','USD'].includes(currency))return toast('Choose LKR or USD');act(async()=>{const row={name,currency,balance:0};if(sb){const {data,error}=await sb.from('wallets').insert({...row,user_id:user.id}).select().single();if(error)throw error;wallets.push(data)}else{wallets.push({id:crypto.randomUUID(),...row});localSave()}})};
-window.deleteWallet=id=>{if(!confirm('Delete this wallet? Transactions will remain in history.'))return;act(async()=>{await remove('wallets',id);wallets=wallets.filter(w=>w.id!==id);localSave()})};
-$('#txnForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),w=wallets.find(x=>x.id===f.get('wallet')),amount=Number(f.get('amount'));if(!w||!amount)return;act(async()=>{const delta=f.get('type')==='income'?amount:-amount;const row={wallet_id:w.id,type:f.get('type'),amount,category:f.get('category'),note:f.get('note'),occurred_at:new Date().toISOString()};if(sb){const {error}=await sb.from('transactions').insert({...row,user_id:user.id});if(error)throw error;const {error:be}=await sb.from('wallets').update({balance:Number(w.balance)+delta}).eq('id',w.id);if(be)throw be}else{txns.unshift({id:crypto.randomUUID(),...row});w.balance=Number(w.balance)+delta;localSave()}e.target.reset()})};
-$('#newTargetBtn').onclick=()=>$('#targetFormCard').classList.remove('hidden');$('#cancelTarget').onclick=()=>$('#targetFormCard').classList.add('hidden');
-$('#targetForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);act(async()=>{const row={name:f.get('name'),goal_amount:Number(f.get('goal')),deadline:f.get('deadline'),saved_amount:0};if(sb){const {error}=await sb.from('targets').insert({...row,user_id:user.id});if(error)throw error}else targets.push({id:crypto.randomUUID(),...row});localSave();e.target.reset();$('#targetFormCard').classList.add('hidden')})};
-window.contribute=id=>{const t=targets.find(x=>x.id===id);const v=Number(prompt(`Contribution amount in LKR for ${t.name}:`));if(!v||v<=0)return;act(async()=>{if(sb){const {error}=await sb.from('targets').update({saved_amount:Number(t.saved_amount)+v}).eq('id',id);if(error)throw error}else t.saved_amount=Number(t.saved_amount)+v;localSave()})};
-window.deleteTarget=id=>{if(!confirm('Delete this target?'))return;act(async()=>{await remove('targets',id);targets=targets.filter(t=>t.id!==id);localSave()})};
-$('#periodSelect').onchange=renderReports;
-function advisorLocal(q){const net=wallets.reduce((s,w)=>s+walletLkr(w),0),spent=txns.filter(t=>t.type==='expense'&&dateISO(t.occurred_at||t.created_at)===today).reduce((s,t)=>s+Number(t.amount),0);const t=targets[0],p=t?targetProgress(t):null;return `Here's your current PocketPulse snapshot:\n• Net worth: ${money(net)}\n• Spending recorded today: ${money(spent)}\n${t?`• ${t.name}: ${money(p.remaining)} remaining; aim for ${money(p.daily)} per day over ${p.days} days.\n`:''}\nFor delivery riding: record fuel and maintenance separately, keep a small emergency buffer, check tyres/brakes/lights before a shift, and don't count gross delivery earnings as take-home pay until costs are deducted.\n\nFor your question (“${q}”), start with money already available after essential bills. Treat this as general guidance, not a guarantee.`}
-function addBubble(text,me=false){const d=document.createElement('div');d.className='bubble'+(me?' me':'');d.textContent=text;$('#chatLog').appendChild(d);$('#chatLog').scrollTop=$('#chatLog').scrollHeight}
-$('#chatForm').onsubmit=async e=>{e.preventDefault();const q=$('#chatInput').value.trim();if(!q)return;$('#chatInput').value='';addBubble(q,true);addBubble('Thinking…');const wait=$('#chatLog').lastChild;try{let answer;if(sb&&user){const {data,error}=await sb.functions.invoke('financial-advisor',{body:{question:q,context:{wallets:wallets.map(w=>({name:w.name,currency:w.currency,balance:w.balance})),targets:targets.map(t=>({name:t.name,goal_amount:t.goal_amount,saved_amount:t.saved_amount,deadline:t.deadline})),today_spend:txns.filter(t=>t.type==='expense'&&dateISO(t.occurred_at||t.created_at)===today).reduce((s,t)=>s+Number(t.amount),0),usd_lkr_rate:rate}}});if(error)throw error;answer=data.answer}else answer=advisorLocal(q);wait.textContent=answer}catch(err){wait.textContent=advisorLocal(q)+'\n\nCloud AI is unavailable right now; showing local guidance instead.';console.error(err)}};
-async function boot(){if(sb){const {data:{session}}=await sb.auth.getSession();if(session){user=session.user;try{await refresh();showApp()}catch(e){toast('Could not load cloud data: '+e.message);showAuth()}}else showAuth()}else{showAuth();$('#authMessage').textContent='Demo mode: configure Supabase in this file for secure accounts and cloud sync. Demo data stays on this device.'}}
-boot();
-})();
-</script></body></html>
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = (n, c='LKR') => (c==='USD'?'$':'LKR ') + Number(n).toLocaleString('en-LK',{minimumFractionDigits:c==='USD'?2:0,maximumFractionDigits:2});
+const toLKR = w => w.currency==='USD' ? w.balance*S.rate : Number(w.balance);
+const day = d => new Date(d).toDateString();
+function toast(msg, err){const t=$('#toast');t.textContent=msg;t.className=err?'err':'';t.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>t.style.display='none',3500)}
+
+/* ===== state ===== */
+const S = {wallets:[],tx:[],targets:[],rate:328.5,view:'home',period:'month',user:null};
+const configured = !SUPABASE_URL.startsWith('YOUR_');
+const sb = configured ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+/* ===== theme ===== */
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('pp-theme',t)}catch(e){}}
+setTheme((()=>{try{return localStorage.getItem('pp-theme')}catch(e){}})() || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+
+/* ===== auth ===== */
+let mode = 'login';
+function setMode(m){
+  mode = m;
+  $('#tab-login').classList.toggle('active', m==='login');
+  $('#tab-signup').classList.toggle('active', m==='signup');
+  $('#pw2wrap').classList.toggle('hidden', m!=='signup');
+  $('#authBtn').textContent = m==='signup' ? 'Create account' : 'Log in';
+  $('#pw').autocomplete = m==='signup' ? 'new-password' : 'current-password';
+}
+function initAuth(){
+  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+  $('#authForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    if(!sb) return toast('Supabase is not configured. See SETUP.md.', true);
+    const email=$('#email').value.trim(), pw=$('#pw').value, btn=$('#authBtn');
+    if(!/^\S+@\S+\.\S+$/.test(email)) return toast('Enter a valid email address.', true);
+    if(pw.length<8) return toast('Password must be at least 8 characters.', true);
+    if(mode==='signup' && pw!==$('#pw2').value) return toast('Passwords do not match.', true);
+    btn.disabled=true; const label=btn.textContent; btn.textContent='Please wait…';
+    try{
+      if(mode==='signup'){
+        const {data,error}=await sb.auth.signUp({email,password:pw,options:{emailRedirectTo:location.origin}});
+        if(error) throw error;
+        if(data.user && data.user.identities && data.user.identities.length===0) throw new Error('An account with this email already exists. Log in instead.');
+        if(!data.session){toast('Check your email to confirm your account, then log in.');setMode('login')}
+      }else{
+        const {error}=await sb.auth.signInWithPassword({email,password:pw});
+        if(error) throw error;
+      }
+    }catch(err){toast(err.message||'Something went wrong.', true)}
+    finally{btn.disabled=false; btn.textContent = mode==='signup'?'Create account':'Log in'}
+  });
+  $('#forgot').addEventListener('click', async e => {
+    e.preventDefault(); if(!sb) return toast('Supabase is not configured.', true);
+    const email=$('#email').value.trim(); if(!email) return toast('Enter your email first.', true);
+    const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin});
+    error ? toast(error.message,true) : toast('Password reset email sent.');
+  });
+}
+
+/* ===== data ===== */
+async function loadAll(){
+  const [w,t,g,s]=await Promise.all([
+    sb.from('wallets').select('*').order('created_at'),
+    sb.from('transactions').select('*').order('occurred_at',{ascending:false}).limit(1000),
+    sb.from('targets').select('*').order('created_at'),
+    sb.from('user_settings').select('*').maybeSingle()]);
+  const bad=[w,t,g,s].find(r=>r.error); if(bad) return toast('Could not load data: '+bad.error.message,true);
+  S.wallets=w.data.map(x=>({...x,balance:Number(x.balance)})); S.tx=t.data.map(x=>({...x,amount:Number(x.amount)}));
+  S.targets=g.data.map(x=>({...x,goal_amount:Number(x.goal_amount),saved_amount:Number(x.saved_amount)}));
+  if(s.data) S.rate=Number(s.data.usd_lkr_rate);
+}
+async function run(promise, okMsg){
+  const {error}=await promise; if(error){toast(error.message,true);return false}
+  await loadAll(); render(); if(okMsg) toast(okMsg); return true;
+}
+
+/* ===== generic form dialog ===== */
+function form(title, fields, onSubmit, okLabel='Save'){
+  $('#dlgTitle').textContent=title; $('#dlgOk').textContent=okLabel;
+  $('#dlgBody').innerHTML=fields.map(f=>`<label for="f_${f.n}">${f.l}</label>`+(f.opts
+    ?`<select id="f_${f.n}">${f.opts.map(o=>`<option value="${esc(o.v??o)}">${esc(o.t??o)}</option>`).join('')}</select>`
+    :`<input id="f_${f.n}" type="${f.t||'text'}" ${f.step?`step="${f.step}"`:''} value="${esc(f.v??'')}" ${f.req?'required':''}>`)).join('');
+  const dlg=$('#dlg'), ok=$('#dlgOk'); ok.disabled=false;
+  $('#dlgCancel').onclick=()=>dlg.close();
+  $('#dlgForm').onsubmit=async e=>{e.preventDefault();ok.disabled=true;
+    const v={}; fields.forEach(f=>v[f.n]=$('#f_'+f.n).value);
+    const done=await onSubmit(v); ok.disabled=false; if(done) dlg.close()};
+  dlg.showModal();
+}
+const nowLocal=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)};
+
+function addWallet(){form('New wallet',[{n:'name',l:'Name',req:1},{n:'cur',l:'Currency',opts:['LKR','USD']},{n:'bal',l:'Opening balance',t:'number',step:'0.01',v:0}],async v=>{
+  const bal=Number(v.bal); if(!v.name.trim()||isNaN(bal)||bal<0){toast('Enter a name and a valid balance.',true);return false}
+  return run(sb.from('wallets').insert({name:v.name.trim(),currency:v.cur,balance:bal}),'Wallet created')})}
+function delWallet(id){const w=S.wallets.find(x=>x.id===id);
+  form('Delete wallet?',[],()=>run(sb.from('wallets').delete().eq('id',id),'Wallet deleted'),'Delete');
+  $('#dlgBody').innerHTML=`<p style="margin-bottom:14px">"${esc(w.name)}" and its transactions will be permanently deleted.</p>`}
+function addTx(type, wid){
+  if(!S.wallets.length) return toast('Create a wallet first.',true);
+  const cats=()=>CATS[type];
+  form(type==='income'?'Add income':'Add expense',[
+    {n:'w',l:'Wallet',opts:S.wallets.map(w=>({v:w.id,t:`${w.name} (${w.currency})`}))},
+    {n:'amt',l:'Amount',t:'number',step:'0.01',req:1},{n:'cat',l:'Category',opts:cats()},
+    {n:'note',l:'Note (optional)'},{n:'at',l:'Date and time',t:'datetime-local',v:nowLocal()}],async v=>{
+    const amt=Number(v.amt); if(!(amt>0)){toast('Enter an amount above 0.',true);return false}
+    return run(sb.rpc('add_transaction',{p_wallet:v.w,p_type:type,p_amount:amt,p_category:v.cat,p_note:v.note||null,p_occurred:new Date(v.at).toISOString()}),type==='income'?'Income saved':'Expense saved')});
+  if(wid) $('#f_w').value=wid;
+}
+function targetForm(t){form(t?'Edit target':'New target',[{n:'name',l:'Target name',v:t?.name,req:1},{n:'goal',l:'Goal amount (LKR)',t:'number',v:t?.goal_amount},{n:'dl',l:'Deadline',t:'date',v:t?.deadline||''}],async v=>{
+  const goal=Number(v.goal); if(!v.name.trim()||!(goal>0)){toast('Enter a name and a goal above 0.',true);return false}
+  const row={name:v.name.trim(),goal_amount:goal,deadline:v.dl||null};
+  return run(t?sb.from('targets').update(row).eq('id',t.id):sb.from('targets').insert(row),'Target saved')})}
+function contribute(id){form('Add savings',[{n:'amt',l:'Amount (LKR)',t:'number',req:1}],async v=>{
+  const a=Number(v.amt); if(!(a>0)){toast('Enter an amount above 0.',true);return false}
+  return run(sb.rpc('contribute_target',{p_target:id,p_amount:a}),'Savings added')})}
+function delTarget(id){form('Delete target?',[],()=>run(sb.from('targets').delete().eq('id',id),'Target deleted'),'Delete');$('#dlgBody').innerHTML='<p style="margin-bottom:14px">This cannot be undone.</p>'}
+
+/* ===== views ===== */
+const txRow=t=>{const w=S.wallets.find(x=>x.id===t.wallet_id);return `<div class="row" style="padding:8px 0;border-top:1px solid var(--bd)"><div><b>${esc(t.category)}</b><div class="mute">${new Date(t.occurred_at).toLocaleString('en-LK',{dateStyle:'medium',timeStyle:'short'})}${w?' · '+esc(w.name):''}${t.note?' · '+esc(t.note):''}</div></div><b class="${t.type==='income'?'pos':'neg'}">${t.type==='income'?'+':'−'}${money(t.amount,w?.currency)}</b></div>`};
+const empty=(m)=>`<p class="mute" style="padding:8px 0">${m}</p>`;
+const targetCalc=t=>{const rem=Math.max(0,t.goal_amount-t.saved_amount),pct=Math.min(100,t.saved_amount/t.goal_amount*100);
+  const days=t.deadline?Math.ceil((new Date(t.deadline)-new Date().setHours(0,0,0,0))/864e5):null;
+  return {rem,pct,days,perDay:days>0?rem/days:null}};
+
+const views={
+home(){
+  const net=S.wallets.reduce((a,w)=>a+toLKR(w),0), today=S.tx.filter(t=>day(t.occurred_at)===day(new Date()));
+  const sum=(a,ty)=>a.filter(t=>t.type===ty).reduce((s,t)=>s+toLKR({balance:t.amount,currency:S.wallets.find(w=>w.id===t.wallet_id)?.currency}),0);
+  const inc=sum(today,'income'),exp=sum(today,'expense');
+  return `<div class="row" style="margin-bottom:14px"><div class="brand"><span>Pocket</span><b>Pulse</b></div><button class="btn ghost" id="themeBtn">Theme</button></div>
+  <div class="card hero"><div class="mute">Net worth · ${new Date().toLocaleDateString('en-LK',{dateStyle:'full'})}</div><div class="num">${money(net)}</div><div class="mute">${S.wallets.length} wallet${S.wallets.length===1?'':'s'} · 1 USD = ${S.rate} LKR (planning rate)</div></div>
+  <div class="grid"><div class="card"><div class="mute">Income today</div><b class="num pos" style="font-size:20px">${money(inc)}</b></div><div class="card"><div class="mute">Spent today</div><b class="num neg" style="font-size:20px">${money(exp)}</b></div><div class="card"><div class="mute">Net today</div><b class="num" style="font-size:20px">${money(inc-exp)}</b></div></div>
+  <div class="row" style="gap:8px;margin-bottom:12px"><button class="btn" style="flex:1" data-act="inc">+ Income</button><button class="btn ghost" style="flex:1" data-act="exp">− Expense</button></div>
+  <div class="card"><h3>Monthly fixed baseline <span class="mute">(planning, not deducted)</span></h3>${Object.entries(FIXED).map(([k,v])=>`<div class="row"><span>${k}</span><span>${money(v)}</span></div>`).join('')}<div class="row" style="border-top:1px solid var(--bd);margin-top:6px;padding-top:6px"><b>Total</b><b>${money(FIXED_TOTAL)}</b></div></div>
+  <div class="card"><h3>Recent activity</h3>${S.tx.slice(0,6).map(txRow).join('')||empty('No transactions yet. Add your first income or expense.')}</div>
+  <div class="card"><h3>Savings progress</h3>${S.targets.map(t=>{const c=targetCalc(t);return `<div style="margin-top:8px"><div class="row"><span>${esc(t.name)}</span><span class="mute">${c.pct.toFixed(0)}%</span></div><div class="bar"><i style="width:${c.pct}%"></i></div></div>`}).join('')||empty('No targets yet.')}</div>
+  <button class="btn ghost" id="exportBtn">Export my data</button> <button class="btn ghost" id="outBtn">Log out</button>
+  <div class="card" style="margin-top:12px"><label for="rate">USD/LKR planning rate</label><input id="rate" type="number" step="0.01" value="${S.rate}"><button class="btn" id="rateBtn">Save rate</button></div>`},
+targets(){return `<div class="row" style="margin-bottom:12px"><h2>Targets</h2><button class="btn" data-act="newT">+ New</button></div>`+
+  (S.targets.map(t=>{const c=targetCalc(t);return `<div class="card"><div class="row"><h3>${esc(t.name)}</h3><span class="mute">${c.pct.toFixed(0)}%</span></div><div class="bar"><i style="width:${c.pct}%"></i></div>
+  <div class="row mute"><span>${money(t.saved_amount)} of ${money(t.goal_amount)}</span><span>${money(c.rem)} left</span></div>
+  <div class="mute">${c.days===null?'No deadline':c.days>0?`${c.days} days left · save ${money(Math.ceil(c.perDay))}/day`:c.rem>0?'Deadline passed':''}${c.rem===0?'Goal reached 🎉':''}</div>
+  <div class="row" style="margin-top:10px;gap:6px"><button class="btn" data-act="contrib" data-id="${t.id}">Add savings</button><button class="btn ghost" data-act="editT" data-id="${t.id}">Edit</button><button class="btn ghost danger" data-act="delT" data-id="${t.id}">Delete</button></div></div>`}).join('')||empty('No targets yet. Set a goal like a new camera and a deadline.'))},
+wallets(){return `<div class="row" style="margin-bottom:12px"><h2>Wallets</h2><button class="btn" data-act="newW">+ New</button></div>`+
+  (S.wallets.map(w=>`<div class="card"><div class="row"><h3>${esc(w.name)}</h3><span class="mute">${w.currency}</span></div><div class="num ${w.balance<0?'neg':''}">${money(w.balance,w.currency)}</div>${w.currency==='USD'?`<div class="mute">≈ ${money(toLKR(w))}</div>`:''}
+  <div class="row" style="gap:6px;margin:10px 0"><button class="btn" data-act="inc" data-id="${w.id}">+ Income</button><button class="btn ghost" data-act="exp" data-id="${w.id}">− Expense</button><button class="btn ghost danger" data-act="delW" data-id="${w.id}">Delete</button></div>
+  ${S.tx.filter(t=>t.wallet_id===w.id).slice(0,5).map(txRow).join('')||empty('No transactions yet.')}</div>`).join('')||empty('No wallets yet. Create one, like Daily Cash or Delivery Earnings.'))},
+reports(){return `<h2 style="margin-bottom:12px">Reports</h2><div class="tabs">${['day','week','month','year'].map(p=>`<button data-p="${p}" class="${S.period===p?'active':''}">${{day:'Daily',week:'Weekly',month:'Monthly',year:'Annual'}[p]}</button>`).join('')}</div>
+  <div id="repSum" class="grid"></div>
+  <div class="card"><h3>Income vs expenses</h3><canvas id="c1"></canvas></div><div class="card"><h3>Spending by category</h3><canvas id="c2"></canvas></div>
+  <div class="card"><h3>Savings progress</h3><canvas id="c3"></canvas></div>
+  <p class="mute">Totals are actual recorded transactions. The fixed baseline (${money(FIXED_TOTAL)}/month) is a planning estimate.</p>`},
+ai(){return `<h2>PocketPulse Gemini AI Advisor</h2><p class="mute" style="margin-bottom:12px">Ask about your own wallets, spending and goals. General guidance only, not professional financial advice.</p>
+  <div class="card"><input id="q" maxlength="500" placeholder="Can I afford to save LKR 1,000 today?"><button class="btn" id="askBtn">Ask</button><div id="ans"></div></div>`}
+};
+
+function chartColors(){const d=document.documentElement.dataset.theme==='dark';Chart.defaults.color=d?'#9AA99E':'#78847D';Chart.defaults.borderColor=d?'#2A3930':'#E5EBE5'}
+let charts=[];
+function drawReports(){
+  charts.forEach(c=>c.destroy());charts=[];chartColors();
+  const start=new Date();start.setHours(0,0,0,0);
+  if(S.period==='week')start.setDate(start.getDate()-6);else if(S.period==='month')start.setDate(1);else if(S.period==='year')start.setMonth(0,1);
+  const L=t=>toLKR({balance:t.amount,currency:S.wallets.find(w=>w.id===t.wallet_id)?.currency});
+  const list=S.tx.filter(t=>new Date(t.occurred_at)>=start);
+  const inc=list.filter(t=>t.type==='income').reduce((s,t)=>s+L(t),0),exp=list.filter(t=>t.type==='expense').reduce((s,t)=>s+L(t),0);
+  $('#repSum').innerHTML=`<div class="card"><div class="mute">Income</div><b class="pos">${money(inc)}</b></div><div class="card"><div class="mute">Expenses</div><b class="neg">${money(exp)}</b></div><div class="card"><div class="mute">Net</div><b>${money(inc-exp)}</b></div>`;
+  charts.push(new Chart($('#c1'),{type:'bar',data:{labels:['Income','Fixed baseline (plan)','Expenses'],datasets:[{data:[inc,S.period==='year'?FIXED_TOTAL*12:S.period==='month'?FIXED_TOTAL:null,exp],backgroundColor:['#9BD65A','#D8A84E','#DD7569']}]},options:{plugins:{legend:{display:false}}}}));
+  const cat={};list.filter(t=>t.type==='expense').forEach(t=>cat[t.category]=(cat[t.category]||0)+L(t));
+  charts.push(new Chart($('#c2'),{type:'doughnut',data:{labels:Object.keys(cat),datasets:[{data:Object.values(cat),backgroundColor:['#DD7569','#D8A84E','#9BD65A','#183B2C','#7FB069','#E9B872','#B85C52','#5B9E37','#94A89B']}]}}));
+  charts.push(new Chart($('#c3'),{type:'bar',data:{labels:S.targets.map(t=>t.name),datasets:[{label:'Saved',data:S.targets.map(t=>t.saved_amount),backgroundColor:'#9BD65A'},{label:'Goal',data:S.targets.map(t=>t.goal_amount),backgroundColor:'#D8A84E'}]},options:{indexAxis:'y'}}));
+}
+function localAdvice(q){
+  const m=S.tx.filter(t=>new Date(t.occurred_at)>=new Date(new Date().setDate(1)));
+  const net=S.wallets.reduce((a,w)=>a+toLKR(w),0),exp=m.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);
+  return `The AI service is unavailable, so here is a quick summary from your data:\n• Net worth: ${money(net)}\n• Spent this month: ${money(exp)}\n• Fixed baseline: ${money(FIXED_TOTAL)}/month\nTry again later for a personalised answer.`}
+
+function render(){
+  const v=$('#view');v.innerHTML=views[S.view]();
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.view));
+  if(S.view==='reports')drawReports();
+}
+function bindApp(){
+  document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{S.view=b.dataset.v;render()}));
+  const v=$('#view'); // single delegated listener: no duplicates after re-render
+  v.addEventListener('click',async e=>{
+    const el=e.target.closest('[data-act],[data-p],#themeBtn,#outBtn,#exportBtn,#rateBtn,#askBtn');if(!el)return;
+    const id=el.dataset.id,a=el.dataset.act;
+    if(el.dataset.p){S.period=el.dataset.p;return render()}
+    if(el.id==='themeBtn'){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');return render()}
+    if(el.id==='outBtn'){await sb.auth.signOut();return}
+    if(el.id==='exportBtn'){const b=new Blob([JSON.stringify({wallets:S.wallets,transactions:S.tx,targets:S.targets},null,2)],{type:'application/json'});const u=document.createElement('a');u.href=URL.createObjectURL(b);u.download='pocketpulse-export.json';u.click();return}
+    if(el.id==='rateBtn'){const r=Number($('#rate').value);if(!(r>0))return toast('Enter a valid rate.',true);return run(sb.from('user_settings').upsert({user_id:S.user.id,usd_lkr_rate:r}),'Rate saved')}
+    if(el.id==='askBtn'){const q=$('#q').value.trim();if(!q)return;el.disabled=true;$('#ans').innerHTML='<div class="chat">Thinking…</div>';
+      let txt;try{const {data,error}=await sb.functions.invoke('financial-advisor',{body:{question:q}});if(error||!data?.answer)throw error||new Error(data?.error);txt=data.answer}catch(err){txt=localAdvice(q)}
+      $('#ans').innerHTML=`<div class="chat">${esc(txt)}</div>`;el.disabled=false;return}
+    ({inc:()=>addTx('income',id),exp:()=>addTx('expense',id),newW:addWallet,delW:()=>delWallet(id),newT:()=>targetForm(),editT:()=>targetForm(S.targets.find(t=>t.id===id)),contrib:()=>contribute(id),delT:()=>delTarget(id)})[a]?.();
+  });
+}
+
+/* ===== boot ===== */
+let appBound=false;
+async function onSession(session){
+  const signedIn=!!session;
+  $('#auth').classList.toggle('hidden',signedIn);$('#app').classList.toggle('hidden',!signedIn);$('#nav').classList.toggle('hidden',!signedIn);
+  if(!signedIn){S.user=null;return}
+  S.user=session.user;if(!appBound){bindApp();appBound=true}
+  await loadAll();render();
+}
+document.addEventListener('DOMContentLoaded',async()=>{
+  initAuth();
+  if(!sb){$('#auth').classList.remove('hidden');$('#cfgWarn').classList.remove('hidden');return}
+  sb.auth.onAuthStateChange((ev,session)=>{if(ev==='INITIAL_SESSION'||ev==='SIGNED_IN'||ev==='SIGNED_OUT'||ev==='TOKEN_REFRESHED')setTimeout(()=>onSession(session),0)});
+});
+</script>
+</body>
+</html>
