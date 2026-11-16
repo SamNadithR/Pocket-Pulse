@@ -76,7 +76,8 @@ canvas{max-height:240px}
 <script>
 /* ===== CONFIG: paste your values (anon key is public by design; never paste service_role) ===== */
 const SUPABASE_URL = 'https://pzlbywxvluscwvcavskg.supabase.co';
-const sb = configured ? supabase.createClient(new URL(SUPABASE_URL).origin, SUPABASE_ANON_KEY) : null;const FIXED = {Rent:9000,'Food and transport':30000,'Mobile bill':3000,'Loan repayment':20000};
+const sb = configured ? supabase.createClient(new URL(SUPABASE_URL).origin, SUPABASE_ANON_KEY) : null;
+  const FIXED = {Rent:9000,'Food and transport':30000,'Mobile bill':3000,'Loan repayment':20000};
 const FIXED_TOTAL = 62000;
 const CATS = {income:['Delivery earnings','Salary','Freelancing','Business income','Other income'],expense:['Food','Transport / fuel','Rent','Mobile','Loan','Shopping','Maintenance','Entertainment','Other']};
 
